@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time Based on Live Location</title>
+    <script>
+        function fetchDateTime(timezone) {
+            const options = {
+                timeZone: timezone,
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false // 24-hour format
+            };
+            const userDateTime = new Intl.DateTimeFormat('en-US', options).format(new Date());
+            document.getElementById("userDateTimeDisplay").textContent = 
+                "Current Date and Time in your timezone (" + timezone + "): " + userDateTime;
+        }
+
+        function getTimezone(latitude, longitude) {
+            // Fetch timezone based on latitude and longitude
+            const url = `http://worldtimeapi.org/api/timezone/Etc/GMT${longitude > 0 ? '-' : '+'}${Math.abs(longitude / 15).toFixed(0)}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Use the timezone from the API response
+                    const timezone = data.timezone;
+                    fetchDateTime(timezone);
+                })
+                .catch(error => console.error("Error fetching timezone:", error));
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    getTimezone(latitude, longitude);
+                }, () => {
+                    console.error("Geolocation service failed.");
+                });
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Call getLocation when the window loads
+        window.onload = getLocation;
+    </script>
+</head>
+<body>
+
+    <h2>User Date and Time:</h2>
+    <p id="userDateTimeDisplay">Fetching...</p> <!-- Placeholder for user date and time -->
+
+</body>
+</html>
