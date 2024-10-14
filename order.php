@@ -110,6 +110,7 @@ $originalPrice = $adjustedPrice ? $adjustedPrice : 0;
 $tax = $originalPrice * 0.18; // 18% tax
 $gatewayCharges = $originalPrice * 0.02;
 $grandTotal = $originalPrice + $tax + $gatewayCharges;
+
 ?>
 
 <!doctype html>
@@ -475,36 +476,6 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
         .check-opt {
             height: 20px;
         }
-
-        /* .tooltip-custom {
-    border: 1px solid grey;
-    background-color: white;
-    color: black;
-}
-
-.tooltip-inner a {
-    color: blue; 
-    text-decoration: underline;
-}
-
-.tooltip:hover {
-    opacity: 1 !important;
-} */
-
-        .deal-timer {
-            border: 1px solid #fff;
-            background-color: #fff;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 10px;
-            padding: 15px;
-        }
-
-        .limited-time {
-            color: #fff;
-            font-size: 24px;
-            font-weight: 700;
-        }
     </style>
 
 
@@ -525,11 +496,11 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
 
         <div class="container">
             <nav class="top-nav p-4 rounded">
-                <!-- <button class="btn btn-close  text-white pulse-shrink-on-hover" onclick="closeNav()"></button> -->
+
                 <div class="d-flex justify-content-between   top-nav-items">
                     <div class="d-flex gap-2 grab-heading" style="align-items: baseline;">
                         <div>
-                            <p class="youstable-offer m-0 text-white offer-off " style="text-align: center;padding-left: 8px;"><strong>Customize Your Server to Fit Your Needs</strong></p>
+                            <p class="youstable-offer m-0 text-white offer-off " style="text-align: center;padding-left: 8px;"><strong>Hurry! Limited-Time Offer – Configure <?= $plangroup; ?></strong></p>
                         </div>
                         <div>
                             <a href="" class="button-deal"><button>Grab deal</button></a>
@@ -537,8 +508,8 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
 
                     </div>
                     <div class="timer d-flex align-items-center">
-                        <p class="limited-time me-3 mb-0">Limited Time Deal! 😋</p>
-                        <div class="deal-timer">
+                        <p class="limited-time me-3 mb-0 text-white fw-bold">End Deal In 😋</p>
+                        <div class="deal-timer bg-white p-2 rounded">
                             <span id="hours">00</span> :
                             <span id="minutes">00</span> :
                             <span id="seconds">00</span>
@@ -546,15 +517,6 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                         </div>
                     </div>
 
-                    <!-- <div class="d-flex gap-5 align-items-center position-relative">
-                        <div>
-                            <a href="/contact-us" class="text-white phone-1">Contact Us</a>
-                        </div>
-
-                        <div>
-                            <a href="https://www.youstable.com/blog/" class="text-white phone-1">Blog</a>
-                        </div>
-                    </div> -->
 
 
                 </div>
@@ -582,6 +544,84 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                             <input type="hidden" name="planId" id="planId" value="<?php echo $_SESSION["select_plan_details"]['p_id']; ?>">
 
                             <div class="row g-4">
+                                <div class="col-md-12 form-floating">
+                                    <?php
+                                    $validPlanGroups = ["VPS HOSTING", "DEDICATED-INDIA", "DEDICATED-USA", "DEDICATED-NETHERLANDS", "SHARED HOSTING"];
+
+                                    if (in_array($plangroup, $validPlanGroups)) {
+                                        // Check if the plan group is SHARED HOSTING
+                                        if ($plangroup === "SHARED HOSTING") {
+
+                                    ?><div class="form-floating">
+                                                <nav>
+                                                    <div class="nav nav-tabs bg-light" id="nav-tab" role="tablist">
+                                                        <button class="nav-link active text-dark" id="domain-search-tab" data-bs-toggle="tab" data-bs-target="#domain-search" type="button" role="tab" aria-controls="domain-search" aria-selected="true">Domain Search</button>
+
+                                                        <button class="nav-link text-dark" id="domain-transfer-tab" data-bs-toggle="tab" data-bs-target="#domain-transfer" type="button" role="tab" aria-controls="domain-transfer" aria-selected="false">Domian Transfer</button>
+
+                                                        <button class="nav-link text-dark" id="order-hosting-tab" data-bs-toggle="tab" data-bs-target="#order-hosting" type="button" role="tab" aria-controls="order-hosting" aria-selected="false">Order Hosting Only</button>
+                                                    </div>
+                                                </nav>
+                                                <div class="tab-content" id="nav-tabContent">
+                                                    <div class="tab-pane fade show active" id="domain-search" role="tabpanel" aria-labelledby="domain-search-tab" tabindex="0">
+                                                        <div class="row g-2 py-3 d-flex align-items-center" id="couponForm">
+                                                            <h5 style="font-size: 14px;font-weight:bold;">Register a new domain</h5>
+                                                            <div class="col-12 form-floating input-group">
+                                                                <span class="input-group-text" id="basic-addon1">www.</span>
+
+                                                                <input type="text" class="form-control input-value" placeholder="Register a new Domain" style="color: #000;"> &nbsp;&nbsp;
+
+                                                                <select type="text" class="col-2 input-value" id="tldepp" name="tld">
+                                                                    <option value=".com">.com</option>
+                                                                </select>
+                                                                &nbsp;&nbsp;
+                                                                <a href="#"><button type="button" class="p-2 btn btn-primary proceed-btn promo-btn btn-sm">Search</button></a>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane fade" id="domain-transfer" role="tabpanel" aria-labelledby="domain-transfer-tab" tabindex="0">
+                                                        <div class="row g-2 py-3 d-flex align-items-center" id="couponForm">
+                                                            <h5 style="font-size: 14px;font-weight:bold;">Transfer your domain from another registrar</h5>
+                                                            <div class="col-12 form-floating input-group">
+                                                                <span class="input-group-text" id="basic-addon1">www.</span>
+                                                                <input type="text" class="form-control input-value" placeholder="Transfer your domain from another registrar" style="color: #000;"> &nbsp;&nbsp;
+
+                                                                <select type="text" class="col-2 input-value">
+                                                                    <option value=".com">.com</option>
+                                                                </select>
+                                                                &nbsp;&nbsp;
+
+                                                                <input type="text" class="col-2 input-value" id="eppcode" name="eppcode"> &nbsp;&nbsp;
+                                                                <a href="#"><button type="button" class="p-2 btn btn-primary proceed-btn promo-btn btn-sm">Search</button></a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="order-hosting" role="tabpanel" aria-labelledby="order-hosting-tab" tabindex="0">
+                                                        <div class="row g-2 py-3 d-flex align-items-center" id="couponForm">
+                                                            <h5 style="font-size: 14px;font-weight:bold;">I will use my existing domain and update my nameservers</h5>
+                                                            <div class="col-12 form-floating input-group">
+                                                                <span class="input-group-text" id="basic-addon1">www.</span>
+                                                                <input type="text" class="form-control input-value">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <?php } else { ?>
+                                            <div class="form-floating">
+                                                <label for="os" class="form-label input-header">Server Name</label>
+                                                <input type="text" class="form-control input-value" name="server" id="server" placeholder="Enter first name" required autofocus>
+                                                <span id="error-server" class="text-danger" style="font-size:12px;"></span>
+                                            </div>
+                                    <?php }
+                                    }
+                                    ?>
+                                </div>
                                 <div class="col-md-6 form-floating">
                                     <label for="fname" class="form-label input-header">First Name</label>
                                     <input type="text" class="form-control input-value" name="fname" id="fname" placeholder="Enter first name" required autofocus>
@@ -605,22 +645,41 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                                     <span id="error-phone" class="text-danger " style="font-size:12px;"></span>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <div class=" form-floating">
-                                        <label for="postcode" class="form-label input-header">Use Exisiting Domain</label>
-                                        <input type="text" class="form-control input-value" name="domain" id="domain" placeholder="Enter Domain" required>
-                                        <span id="error-domain" class="text-danger " style="font-size:12px;"></span>
-                                        <p></p>
-                                    </div>
+                                    <?php
+                                    $validPlanGroups = ["VPS HOSTING", "DEDICATED-INDIA", "DEDICATED-USA", "DEDICATED-NETHERLANDS", "SHARED HOSTING"];
+
+                                    if (in_array($plangroup, $validPlanGroups)) {
+                                        // Check if the plan group is SHARED HOSTING
+                                        if ($plangroup === "SHARED HOSTING") { ?>
+                                            <div class="form-floating">
+                                                <label for="domain" class="form-label input-header">Use Existing Domain</label>
+                                                <input type="text" class="form-control input-value" name="domain" id="domain" placeholder="Enter Domain" required>
+                                                <span id="error-domain" class="text-danger" style="font-size:12px;"></span>
+                                            </div>
+                                            <div class="pt-1">
+                                                <img src="https://checkout.youstable.com/assets/img/icons/info-icon.png" alt="info" class="info-icon me-2">
+                                                <span class="info-con" style="font-size:12px;">Don't have a domain? You can claim one later.</span>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="form-floating">
+                                                <label for="os" class="form-label input-header">Operating System</label>
+                                                <select class="form-select input-value" name="os" id="os" required>
+                                                    <option value="almalinux-8.8-x86_64">Almalinux-8.8-x86_64</option>
+                                                    <option value="almalinux-9.2-x86_64">Almalinux-9.2-x86_64</option>
+                                                    <option value="rocky-8.8-x86_64">Rocky-8.8-x86_64</option>
+                                                    <option value="rocky-9.2-x86_64">Rocky-9.2-x86_64</option>
+                                                    <option value="debian-11-x86_64">Debian-11-x86_64</option>
+                                                    <option value="debian-12-x86_64">Debian-12-x86_64</option>
+                                                    <option value="ubuntu-20.04-x86_64">Ubuntu-20.04-x86_64</option>
+                                                    <option value="ubuntu-22.04-x86_64">Ubuntu-22.04-x86_64</option>
+                                                </select>
+                                                <span id="error-os" class="text-danger" style="font-size:12px;"></span>
+                                            </div>
+                                    <?php }
+                                    }
+                                    ?>
 
                                 </div>
-                                <!-- <div class="col-md-6">
-    <div class="input-group form-floating">
-        <label for="postcode" class="form-label input-header">Use Existing Domain</label>
-        <input type="text" class="form-control input-value" name="domain" id="domain" placeholder="Enter Domain" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
-        <span class="input-group-text" id="basic-addon2" data-bs-toggle="tooltip" title='<a href="https://youstable.in/domain-registration" target="_blank">Click here for more info</a>'><i class="fa-light fa-circle-info"></i></span>
-        <span id="error-domain" class="text-danger " style="font-size:12px;"></span>
-    </div>
-</div> -->
 
 
 
@@ -772,10 +831,6 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                                 </div>
 
                             </div>
-                            <!-- <div class="d-flex justify-content-between mb-2">
-                                <span class="price-sum-detail">After Discount </span>
-                                <span class="after-discount">0</span>
-                            </div> -->
                             <div class="d-flex justify-content-between mb-2">
                                 <span class="price-sum-detail">Tax(18%)</span>
                                 <span class=""><?= $details["currency"]; ?><?= $tax; ?></span>
@@ -790,24 +845,33 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                                 <span class="grand-total1">Grand Total</span>
                                 <span class="grand-total"><?php echo $details['currency'] ?><?php echo number_format($grandTotal, 2); ?></span>
                             </div>
+                            <?php
+                            $validBillingCycle = ["monthly", "semiannually", "annually", "triannually"];
+                            if (in_array($billingcycle, $validBillingCycle)) {
+                                // Check if the plan group is SHARED HOSTING
+                                if ($billingcycle === "monthly") {
+                            ?>
+                                <?php
+                                } else {
+                                ?>
+                                    <div class="row d-flex align-items-center " id="couponForm">
+                                        <span id="apply-coupon" onclick="showInput()">Apply coupon code</span>
+                                        <div class="col-8 form-floating">
+                                            <label class="form-label input-header hidden" id="inputheader">Enter Coupon</label>
+                                            <input type="text" class="form-control input-value hidden" id="couponCode" name="couponCode" placeholder="Coupon Code" style="text-transform: uppercase;">
 
-                            <!-- <div class="col-12 form-floating mb-4">
-                                <label class="form-label input-header">Order Comment</label>
-                                <input type="text" class="form-control input-value" id="" name="" placeholder="Type Here...">
-                                <span id="error-message" class="text-danger"></span>
-                                <span id="success-message" class="text-success fw-bold"></span>
-                            </div> -->
+                                        </div>
+                                        <div class="col-4 p-2 d-flex align-items-end justify-content-center">
+                                            <a href="#payment-section" class="scrolltopay-btn"><button type="button" id="applyCouponBtn" class="btn btn-primary proceed-btn p-2 promo-btn applyCouponBtn hidden" onclick="checkCouponCode()">Apply</button></a>
+                                        </div>
 
-                            <div class="row g-2 py-3 d-flex align-items-center" id="couponForm">
-                                <div class="col-8 form-floating">
-                                    <label class="form-label input-header">Enter Coupon</label>
-                                    <input type="text" class="form-control input-value" id="couponCode" name="couponCode" placeholder="Coupon Code">
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
 
-                                </div>
-                                <div class="col-4 p-2 d-flex align-items-end justify-content-center">
-                                    <a href="#payment-section" class="scrolltopay-btn"><button type="button" id="applyCouponBtn" class="btn btn-primary proceed-btn p-2 promo-btn applyCouponBtn" onclick="checkCouponCode()">Apply</button></a>
-                                </div>
-                            </div>
+
 
                             <div class="form-check">
                                 <input class="form-check-input check-opt" type="checkbox" id="checkbox" checked required>
@@ -853,30 +917,6 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                             </div>
                         </div>
                     </div>
-
-
-
-                    <!-- <div class="mb-3 form-banner billing-form-banner p-3">
-                        <div class="top-header d-flex justify-content-between align-items-center">
-                            <h3 class="detail-head">Discount Codes</h3>
-                            <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#promoCode" aria-expanded="false" aria-controls="promoCode">
-                                <i class="bi bi-chevron-down rotate"></i>
-                            </button>
-                        </div>
-                        <div class="collapse" id="promoCode">
-                            <div class="row g-3 p-3 d-flex align-items-center" id="couponForm">
-                                <div class="col-12 form-floating">
-                                    <label class="form-label input-header">Enter Coupon</label>
-                                    <input type="text" class="form-control input-value" id="couponCode" name="couponCode" placeholder="Coupon Code">
-                                
-                                </div>
-                                <div class="col-12 d-flex align-items-end justify-content-center">
-                                    <a href="#payment-section" class="scrolltopay-btn"><button type="button" id="applyCouponBtn" class="btn btn-primary proceed-btn promo-btn applyCouponBtn" onclick="checkCouponCode()">Apply Coupon</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                 </div>
 
             </div>
@@ -897,7 +937,39 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
     </footer>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+        #apply-coupon {
+            cursor: pointer;
+            text-align: center;
+            color: #270069;
+            font-weight: bold;
+        }
 
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: inline-block;
+        }
+    </style>
+    <script>
+        function showInput() {
+            // var couponForm = document.getElementById('couponForm');
+            var couponText = document.getElementById('apply-coupon');
+            var couponInput = document.getElementById('couponCode');
+            var applyCouponBtn = document.getElementById('applyCouponBtn');
+            var inputheader = document.getElementById('inputheader');
+
+            // Hide the text and show the input field and button
+            // couponForm.classList.add('hidden');
+            couponText.classList.add('hidden');
+            couponInput.classList.add('visible');
+            applyCouponBtn.classList.add('visible');
+            inputheader.classList.add('visible');
+            couponInput.focus();
+        }
+    </script>
     <script>
         // Set the countdown time to 15 minutes (in seconds)
         let countdownTime = 15 * 60;
@@ -961,9 +1033,27 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                 const lname = $('#lname').val().trim();
                 const email = $('#email').val().trim();
                 const phone = $('#phone').val().trim();
-                const domain = $('#domain').val().trim();
+                <?php
+                $validPlanGroups = ["VPS HOSTING", "DEDICATED-INDIA", "DEDICATED-USA", "DEDICATED-NETHERLANDS", "SHARED HOSTING"];
+                if (in_array($plangroup, $validPlanGroups)) {
+                    // Check if the plan group is SHARED HOSTING
+                    if ($plangroup === "SHARED HOSTING") { ?>
+                        const domain = $('#domain').val().trim();
+                    <?php
+                    } else {
+
+                    ?>
+                        const os = $('#os').val();
+                <?php
+                    }
+                }
+                ?>
+
+
+
                 const country = $('#country').val();
                 const state = $('#state').val();
+
                 const city = $('#city').val().trim();
                 const postcode = $('#postcode').val().trim();
                 const address = $('#address').val().trim();
@@ -985,13 +1075,30 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                     showError('error-phone', 'Phone number must be 10 digits.');
                     isValid = false;
                 }
-                if (domain === '') {
-                    showError('error-domain', 'Domain name is required');
-                    isValid = false;
-                } else if (domain.includes(' ')) {
-                    showError('error-domain', 'Domain name cannot contain spaces');
-                    isValid = false;
+                <?php
+                $validPlanGroups = ["VPS HOSTING", "DEDICATED-INDIA", "DEDICATED-USA", "DEDICATED-NETHERLANDS", "SHARED HOSTING"];
+                if (in_array($plangroup, $validPlanGroups)) {
+                    // Check if the plan group is SHARED HOSTING
+                    if ($plangroup === "SHARED HOSTING") { ?>
+                        if (domain === '') {
+                            showError('error-domain', 'Domain name is required');
+                            isValid = false;
+                        } else if (domain.includes(' ')) {
+                            showError('error-domain', 'Domain name cannot contain spaces');
+                            isValid = false;
+                        }
+                    <?php
+                    } else {
+                    ?>
+                        if (os === '') {
+                            showError('error-os', 'Operating is required');
+                            isValid = false;
+                        }
+                <?php
+                    }
                 }
+                ?>
+
                 if (country === '') {
                     showError('error-country', 'Country is required');
                     isValid = false;
@@ -1005,7 +1112,10 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                     isValid = false;
                 }
                 const postcodeRegex = /^[0-9]{6}$/;
-                if (!postcodeRegex.test(postcode)) {
+                if (postcode === '') {
+                    showError('error-postcode', 'Postcode is required');
+                    isValid = false;
+                } else if (!postcodeRegex.test(postcode)) {
                     showError('error-postcode', 'Postcode must be a 6-digit number');
                     isValid = false;
                 }
@@ -1034,7 +1144,7 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
             const errorIds = [
                 'error-fname', 'error-lname', 'error-email', 'error-phone',
                 'error-domain', 'error-country', 'error-state', 'error-city',
-                'error-postcode', 'error-address', 'error-terms'
+                'error-postcode', 'error-address', 'error-terms', 'error-os'
             ];
             errorIds.forEach(id => $('#' + id).text(''));
         }
@@ -1072,6 +1182,14 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
     <script>
         function checkCouponCode() {
             const couponInput = document.getElementById("couponCode").value.toUpperCase();
+            if (couponInput === '') {
+                toastr.error("Please Enter a coupon code.", "Error", {
+                    closeButton: true,
+                    progressBar: true,
+                    timeOut: 5000
+                });
+                return; // Stop execution if no coupon code is entered
+            }
             const validCouponCode = <?= '"' . $_SESSION["code"] . '"' ?>;
             const originalPrice = parseFloat(<?php echo $originalPrice ? $originalPrice : '0'; ?>);
             const currency = `<?php echo $details['currency']; ?>`;
@@ -1211,15 +1329,6 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
             background-color: red;
         }
     </style>
-    <script>
-        function closeNav() {
-            var topNav = document.querySelector('.top-nav');
-            if (topNav.style.display !== 'none') {
-                topNav.style.display = 'none';
-                localStorage.setItem('topNavVisibility', 'hidden');
-            }
-        }
-    </script>
 
     <script>
         jQuery(document).ready(function($) {
@@ -1240,7 +1349,25 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                 let phone = $('#phone').val();
                 let address = $('#address').val();
                 let gst = $('#gst').val();
-                let domain = $('#domain').val();
+                // let domain = $('#domain').val();
+                let domain = '';
+                let os = '';
+                <?php
+                $validPlanGroups = ["VPS HOSTING", "DEDICATED-INDIA", "DEDICATED-USA", "DEDICATED-NETHERLANDS", "SHARED HOSTING"];
+                if (in_array($plangroup, $validPlanGroups)) {
+                    // Check if the plan group is SHARED HOSTING
+                    if ($plangroup === "SHARED HOSTING") { ?>
+                        domain = $('#domain').val();
+                    <?php
+                    } else {
+
+                    ?>
+                        os = $('#os').val();
+                <?php
+                    }
+                }
+                ?>
+
                 let city = $('#city').val();
                 let state = $('#state').val();
                 let postcode = $('#postcode').val();
@@ -1273,6 +1400,7 @@ $grandTotal = $originalPrice + $tax + $gatewayCharges;
                     address: address,
                     gst: gst,
                     domain: domain,
+                    os: os,
                     city: city,
                     state: state,
                     postcode: postcode,

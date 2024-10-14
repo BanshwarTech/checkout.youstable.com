@@ -66,35 +66,4 @@ $currency = "₹";
         applyCouponBtn.classList.add('visible');
         couponInput.focus();
     }
-
-    function checkCouponCode() {
-        const couponInput = document.getElementById("coupon-input").value.trim();
-        var discountSpan = document.querySelector('.discount-amount');
-        var grandTotalSpan = document.querySelector('.grand-total');
-        var errorMessage = document.getElementById('error-message');
-        var originalPrice = <?= $price ?>; // Original price of the product
-
-        if (couponInput === fixedCouponCode) {
-            // If the coupon code matches, apply the discount
-            var newTotal = originalPrice - discountAmount;
-            discountSpan.textContent = `Discount: ${discountAmount}%`;
-            grandTotalSpan.textContent = `Grand Total: ${newTotal}`;
-
-            discountSpan.classList.add('visible');
-            grandTotalSpan.classList.add('discount-applied');
-            errorMessage.classList.add('hidden'); // Hide error message if valid
-        } else if (couponInput.length > 0) {
-            // Show error message if the coupon code is invalid and there's input
-            errorMessage.classList.remove('hidden');
-            discountSpan.classList.remove('visible');
-            grandTotalSpan.textContent = `Grand Total: $${originalPrice}`;
-            grandTotalSpan.classList.remove('discount-applied');
-        } else {
-            // Hide the error message if the input is empty
-            errorMessage.classList.add('hidden');
-            discountSpan.classList.remove('visible');
-            grandTotalSpan.textContent = `Grand Total: $${originalPrice}`;
-            grandTotalSpan.classList.remove('discount-applied');
-        }
-    }
 </script>

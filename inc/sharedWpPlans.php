@@ -564,7 +564,7 @@
         // Use jQuery to send the data via POST to process.php
         $.post('process.php', postData, function(response) {
             // Prepare URL with query parameters for redirect
-            var url = 'payment-details.php?billingcycle=' + encodeURIComponent(billingcycle) +
+            var url = 'order.php?billingcycle=' + encodeURIComponent(billingcycle) +
                 '&plangroup=' + encodeURIComponent(plangroup) +
                 '&plan=' + encodeURIComponent(plan) +
                 '&currency=' + encodeURIComponent(currency);
