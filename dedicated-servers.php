@@ -128,7 +128,7 @@ include('inc/header.php');
     var plan = $(button).data('plan') || '';
     var currency = $(button).data('currency') || '';
 
-    // Prepare the data to send
+
     var postData = {
       billingcycle: billingcycle,
       plan: plan,
@@ -138,15 +138,14 @@ include('inc/header.php');
 
     console.log(postData);
 
-    // Use jQuery to send the data via POST to process.php
+
     $.post('process.php', postData, function(response) {
-      // Prepare URL with query parameters for redirect
-      var url = 'payment-details.php?billingcycle=' + encodeURIComponent(billingcycle) +
+
+      var url = 'order.php?billingcycle=' + encodeURIComponent(billingcycle) +
         '&plangroup=' + encodeURIComponent(plangroup) +
         '&plan=' + encodeURIComponent(plan) +
         '&currency=' + encodeURIComponent(currency);
 
-      // Redirect to another page with variables in URL
       window.location.href = url;
     });
   }
@@ -832,24 +831,7 @@ include('inc/header.php');
 </section>
 
 
-<!--Operating-systems-->
 
-<!-- <section class="map-section about-maps awesome-youstable">
-  <div class="container">
-    <div class="text-center">
-      <h2 class="Banner-Heading VPS-Hosting-Needss">Dedicated Servers Located Globally</h2>
-      <p class="server-title title_sides-width">Our best-in-class dedicated servers offer guaranteed online success,
-        with excellent multiple Server Locations ensuring the Highest Uptime.
-      </p>
-      <div class="row">
-        <div class="col">
-          <img src="assets/img/dedicatedhsotingimg/map-.png" alt="open cart" class="deploy-app-imgs">
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section> -->
 
 
 
