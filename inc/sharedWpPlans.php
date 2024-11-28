@@ -52,7 +52,7 @@
                                 <button
                                     class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING"
+                                    data-plangroup="SHARED-HOSTING"
                                     data-billingcycle="monthly"
                                     data-plan="DaStart"
                                     data-currency="₹"
@@ -61,8 +61,13 @@
                             </a>
                             <a href="#"
                                 class="link-color-black usa-host-price" target="_self"><button
-                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="GetStared('monthly')">Get
+                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="monthly"
+                                    data-plan="DaStart"
+                                    data-currency="$" type="submit">Get
                                     Started</button></a>
+
                             <div class="hosting_specification">
                                 <div class="d-flex gap-2 specifications">
                                     <img src="assets/img/speci-tick.png" class="specification-tick">
@@ -101,7 +106,7 @@
                                 class="text-white indian-host-price" target="_self"><button
                                     class="btn-purple exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING"
+                                    data-plangroup="SHARED-HOSTING"
                                     data-billingcycle="monthly"
                                     data-plan="DaProfessional"
                                     data-currency="₹"
@@ -109,7 +114,13 @@
                                     Started</button></a>
                             <a href="#"
                                 class="text-white usa-host-price" target="_self"><button
-                                    class="btn-purple exploreplan-btn comp-button-design" onclick="GetStared('monthly')">Get
+                                    class="btn-purple exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="monthly"
+                                    data-plan="DaProfessional"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
                             <div class="hosting_specification">
                                 <div class="d-flex gap-2 specifications">
@@ -147,7 +158,8 @@
                                 class="link-color-black indian-host-price"><button
                                     class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING" data-billingcycle="monthly"
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="monthly"
                                     data-plan="DaElite"
                                     data-currency="₹"
                                     type="submit">Get
@@ -155,7 +167,13 @@
 
                             <a href="#"
                                 class="link-color-black usa-host-price" target="_self"><button
-                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="GetStared('monthly')">Get
+                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="monthly"
+                                    data-plan="DaElite"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
 
 
@@ -206,7 +224,7 @@
                                 class="link-color-black indian-host-price" target="_self"><button
                                     class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING"
+                                    data-plangroup="SHARED-HOSTING"
                                     data-billingcycle="annually"
                                     data-plan="DaStart"
                                     data-currency="₹"
@@ -215,7 +233,13 @@
 
                             <a href="#"
                                 class="link-color-black usa-host-price" target="_self"><button
-                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="GetStarted('yearly')">Get
+                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="annually"
+                                    data-plan="DaStart"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
 
                             <div class="hosting_specification">
@@ -257,7 +281,7 @@
                                 class="text-white indian-host-price"><button
                                     class="btn-purple exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING" data-billingcycle="annually"
+                                    data-plangroup="SHARED-HOSTING" data-billingcycle="annually"
                                     data-plan="DaProfessional"
                                     data-currency="₹"
                                     type="submit">Get
@@ -265,7 +289,12 @@
 
                             <a href="#"
                                 class="text-white usa-host-price" target="_self"><button
-                                    class="btn-purple exploreplan-btn comp-button-design" onclick="GetStarted('yearly')">Get
+                                    class="btn-purple exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING" data-billingcycle="annually"
+                                    data-plan="DaProfessional"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
                             <div class="hosting_specification">
                                 <div class="d-flex gap-2 specifications">
@@ -310,16 +339,21 @@
                             <a href="#"
                                 class="link-color-black indian-host-price" target="_self"><button
                                     class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
-
-                                    data-plangroup="SHARED HOSTING" data-billingcycle="annually"
-                                    data-plan="DaProfessional"
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="annually"
+                                    data-plan="DaElite"
                                     data-currency="₹"
                                     type="submit">Get
                                     Started</button></a>
 
                             <a href="#"
                                 class="link-color-black usa-host-price" target="_self"><button
-                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="GetStarted('yearly')">Get
+                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="annually"
+                                    data-plan="DaElite"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
                             <div class="hosting_specification">
                                 <div class="d-flex gap-2 specifications">
@@ -332,21 +366,26 @@
                                         title="Choose a DaElite Web Hosting plan for 1 or 3 years and get a free domain name for the first year! You can select from the following extensions: .com, .xyz, .shop, .cam, .co, .blog, .info, .life, .live, .site, .tech, or .technology.After purchasing your hosting plan, the free domain registration will appear in your control panel. The domain is free for the first year, with renewal charges applying after that. This offer cannot be customized.">
                                         1 Free Domain</p>
                                 </div>
+
                                 <div class="d-flex gap-2 specifications">
                                     <img src="assets/img/speci-tick.png" class="specification-tick">
                                     <p>200 GB NVMe SSD</p>
                                 </div>
+
                                 <div class="d-flex gap-2 specifications">
                                     <img src="assets/img/speci-tick.png" class="specification-tick">
                                     <p>Unmetered Bandwidth</p>
                                 </div>
+
                                 <div class="d-flex gap-2 specifications">
                                     <img src="assets/img/speci-tick.png" class="specification-tick">
                                     <p>4GB RAM</p>
                                 </div>
+
                                 <div class="free_setup btn-yellow " bis_skin_checked="1">
                                     <p class="m-0">You Save 55%</p>
                                 </div>
+
                             </div>
 
                         </div>
@@ -375,7 +414,7 @@
                                 class="link-color-black indian-host-price" target="_self"><button
                                     class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING"
+                                    data-plangroup="SHARED-HOSTING"
                                     data-billingcycle="triannually"
                                     data-plan="DaStart"
                                     data-currency="₹"
@@ -384,7 +423,13 @@
 
                             <a href="#"
                                 class="link-color-black usa-host-price" target="_self"><button
-                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="GetStarted('ternar   y')">Get
+                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="triannually"
+                                    data-plan="DaStart"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
 
                             <div class="hosting_specification">
@@ -425,7 +470,8 @@
                                 class="text-white indian-host-price" target="_self"><button
                                     class="btn-purple exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING" data-billingcycle="triannually"
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="triannually"
                                     data-plan="DaProfessional"
                                     data-currency="₹"
                                     type="submit">Get
@@ -433,7 +479,13 @@
 
                             <a href="#"
                                 class="text-white usa-host-price" target="_self"><button
-                                    class="btn-purple exploreplan-btn comp-button-design" onclick="GetStarted('ternar   y')">Get
+                                    class="btn-purple exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="triannually"
+                                    data-plan="DaProfessional"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
                             <div class="hosting_specification">
                                 <div class="d-flex gap-2 specifications">
@@ -480,7 +532,8 @@
                                 class="link-color-black indian-host-price" target="_self"><button
                                     class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
 
-                                    data-plangroup="SHARED HOSTING" data-billingcycle="triannually"
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="triannually"
                                     data-plan="DaElite"
                                     data-currency="₹"
                                     type="submit">Get
@@ -488,7 +541,13 @@
 
                             <a href="#"
                                 class="link-color-black usa-host-price" target="_self"><button
-                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="GetStarted('ternar   y')">Get
+                                    class="btn-yellow exploreplan-btn comp-button-design" onclick="getPlanDetails(this)"
+
+                                    data-plangroup="SHARED-HOSTING"
+                                    data-billingcycle="triannually"
+                                    data-plan="DaElite"
+                                    data-currency="$"
+                                    type="submit">Get
                                     Started</button></a>
 
 
@@ -551,7 +610,6 @@
         var plan = $(button).data('plan') || '';
         var currency = $(button).data('currency') || '';
 
-        // Prepare the data to send
         var postData = {
             billingcycle: billingcycle,
             plan: plan,
@@ -561,15 +619,13 @@
 
         console.log(postData);
 
-        // Use jQuery to send the data via POST to process.php
         $.post('process.php', postData, function(response) {
-            // Prepare URL with query parameters for redirect
-            var url = 'order.php?billingcycle=' + encodeURIComponent(billingcycle) +
+
+            var url = 'payment-details.php?billingcycle=' + encodeURIComponent(billingcycle) +
                 '&plangroup=' + encodeURIComponent(plangroup) +
                 '&plan=' + encodeURIComponent(plan) +
                 '&currency=' + encodeURIComponent(currency);
 
-            // Redirect to another page with variables in URL
             window.location.href = url;
         });
     }

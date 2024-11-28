@@ -14,11 +14,8 @@ header(
 function random_strings($length_of_string)
 {
 
-    // String of all alphanumeric character
     $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
-    // Shuffle the $str_result and returns substring
-    // of specified length
     return substr(
         str_shuffle($str_result),
         0,
@@ -44,6 +41,9 @@ $planName = $_POST["planName"];
 $planPrice = $_POST["planPrice"];
 $payAmount = $_POST["payAmount"];
 $domainName = $_POST["domain"];
+$billing_cycle = $_POST["billingcycle"];
+$currency = $_POST["currency"];
+
 $status = "Pending";
 $orderDate = date("Y-m-d H:i:s");
 
@@ -51,8 +51,8 @@ $orderDate = date("Y-m-d H:i:s");
 if (isset($_POST["action"]) && ($_POST["action"] = "payOrder")) {
     $razorpay_mode = "test";
 
-    $razorpay_test_key = "rzp_test_GLdwHf2ou851Fb"; //Your Test Key
-    $razorpay_test_secret_key = "4Ev8GCSpRAxSNGZir8v5qM8y"; //Your Test Secret Key
+    $razorpay_test_key = "rzp_test_GLdwHf2ou851Fb";
+    $razorpay_test_secret_key = "4Ev8GCSpRAxSNGZir8v5qM8y";
 
     $razorpay_live_key = "rzp_live_itzAkBlhedzK09";
     $razorpay_live_secret_key = "BJ8CyCLH2gRGHtLQdr1DUyrc";
@@ -99,19 +99,48 @@ if (isset($_POST["action"]) && ($_POST["action"] = "payOrder")) {
         }
     }
 
+    // Step 1: Check if the record exists
+    $sql_order = "SELECT oid FROM `order` WHERE clientMail = '$email' AND domainName = '$domainName'";
+    $result_order = mysqli_query($con, $sql_order);
+    $orderId = '';
+
+    if ($row = mysqli_fetch_assoc($result_order)) {
+        $orderId = $row['oid'];
+    }
+    mysqli_free_result($result_order);
 
 
-    $iorder = "INSERT INTO `order` (planName, planPrice, domainName, gst, status, totalAmount, orderId, clientMail, orderDate) 
-                   VALUES ('$planName', '$planPrice', '$domainName', '$gst', '$status', '$payAmount', '$order_id', '$email', '$orderDate')";
+    if ($orderId) {
+        // Step 2: If record exists, update it
+        $update_sql = "UPDATE `order` 
+        SET planName = '$planName', billing_cycle = '$billing_cycle', planPrice = '$planPrice', currency = '$currency', 
+            gst = '$gst', status = '$status', totalAmount = '$payAmount', orderDate = '$orderDate' 
+        WHERE oid = $orderId";
 
-    if (!mysqli_query($con, $iorder)) {
-        echo json_encode(["res" => "error", "info" => "Failed to insert order: " . mysqli_error($con)]);
-        exit();
+        if (mysqli_query($con, $update_sql)) {
+            $_SESSION["order_inserted_id"] = $orderId;
+        } else {
+            echo json_encode(["res" => "error", "info" => "Error updating order: " . mysqli_error($con)]);
+            exit();
+        }
+    } else {
+        // Step 3: If no record exists, insert a new one
+        $iorder = "INSERT INTO `order` (planName, billing_cycle, planPrice, currency, domainName, gst, status, totalAmount, orderId, clientMail, orderDate) 
+               VALUES ('$planName', '$billing_cycle', '$planPrice', '$currency', '$domainName', '$gst', '$status', '$payAmount', '$order_id', '$email', '$orderDate')";
+
+        if (mysqli_query($con, $iorder)) {
+            // Capture the inserted order's ID and store in session
+            $order_inserted_id = mysqli_insert_id($con);
+            $_SESSION["order_inserted_id"] = $order_inserted_id;
+        } else {
+            echo json_encode(["res" => "error", "info" => "Failed to insert order: " . mysqli_error($con)]);
+            exit();
+        }
     }
 
+
+
     $_SESSION['client_order_email'] = $email;
-    $order_inserted_id = mysqli_insert_id($con);
-    $_SESSION["order_inserted_id"] = $order_inserted_id;
 
     // Additional note for payment
     $note = "Payment of amount Rs. " . $payAmount;
@@ -149,6 +178,7 @@ if (isset($_POST["action"]) && ($_POST["action"] = "payOrder")) {
     $orderRes = json_decode($response);
 
     if (isset($orderRes->id)) {
+
         $rpay_order_id = $orderRes->id;
 
         $dataArr = [
@@ -168,6 +198,7 @@ if (isset($_POST["action"]) && ($_POST["action"] = "payOrder")) {
         ]);
         exit();
     } else {
+
         echo json_encode([
             "res" => "error",
             "order_id" => $order_id,

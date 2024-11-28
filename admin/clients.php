@@ -146,6 +146,7 @@ if (isset($_GET['date'])) {
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h5 class="card-title">Clients</h5>
+
                                 <form action="" method="GET" id="dateFilterForm" class="ml-auto">
                                     <select name="date" onchange="document.getElementById('dateFilterForm').submit();" class="form-select border">
                                         <option value="">Filter Data</option>
@@ -155,7 +156,19 @@ if (isset($_GET['date'])) {
                                     </select>
                                 </form>
                             </div>
+                            <?php
+                            if (isset($_SESSION["success_message"])) { ?>
+                                <div class="alert alert-success"><?php echo $_SESSION["success_message"] ?></div>
+                            <?php
+                                unset($_SESSION["success_message"]);
+                            }
 
+                            if (isset($_SESSION["error_message"])) { ?>
+                                <div class="alert alert-danger"><?php echo $_SESSION["error_message"] ?></div>
+                            <?php
+                                unset($_SESSION["error_message"]);
+                            }
+                            ?>
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -267,7 +280,57 @@ if (isset($_GET['date'])) {
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <script src="assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <style>
+        /* Customizing the Toastr notification look */
+        #toast-container>.toast-success {
+            background-color: #1e5631 !important;
+            color: #fff !important;
+            opacity: 1 !important;
+        }
+
+        #toast-container>.toast-error {
+            background-color: #8b0000 !important;
+            color: #fff !important;
+            opacity: 1 !important;
+        }
+
+        #toast-container>div .toast-progress {
+            background-color: #fff !important;
+        }
+
+        #toast-container>div .toast-title {
+            color: #fff !important;
+        }
+
+        #toast-container>div .toast-message {
+            color: #ddd !important;
+        }
+
+        #toast-container>div .toast-close-button {
+            color: #fff !important;
+        }
+    </style>
+
+    <script type="text/javascript">
+        toastr.options = {
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "closeButton": true
+        };
+
+        // Trigger Toastr notifications based on messages
+        <?php if ($_SESSION['success_message']): ?>
+            toastr.success('<?php echo $_SESSION['success_message']; ?>');
+        <?php unset($_SESSION['success_message']);
+        elseif ($_SESSION['error_message']): ?>
+            toastr.error('<?php echo $_SESSION['error_message']; ?>');
+        <?php unset($_SESSION['errerror_messageor']);
+        endif; ?>
+    </script>
     <?php
     $client_id = isset($_GET['client_id']) ? intval($_GET['client_id']) : 0;
     $client_data = null;

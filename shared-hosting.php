@@ -1,9 +1,8 @@
 <?php
 $page = 'shared-hosting';
 include('inc/header.php');
-
 ?>
-<title><?= $page; ?></title>
+
 
 <style>
     .hidden {

@@ -6,9 +6,8 @@ error_reporting(E_ALL);
 session_start();
 $page = 'Home';
 include('inc/header.php');
-
 ?>
-<title><?= $page; ?></title>
+
 <style>
     .section-p {
         height: 30vh !important;
@@ -550,7 +549,7 @@ include('inc/header.php');
                 <img src="assets/img/cloud-circle.png" class="movingcloud">
             </span>
         </div>
-        <?php include('animate-text.php') ?>
+
 
         <div class="d-flex justify-content-between">
             <span class="text-start">

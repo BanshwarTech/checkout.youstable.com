@@ -2,9 +2,6 @@
 // Include the meta data
 include 'meta.php';
 
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,7 +9,19 @@ include 'meta.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
 
+    }, false);
+
+    document.addEventListener("keydown", function(e) {
+      if (e.ctrlKey || e.keyCode == 123) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+      }
+    });
+  </script>
 
 
   <!-- Favicon -->

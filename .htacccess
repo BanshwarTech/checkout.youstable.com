@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Redirect %24 to $ in the URL
+RewriteCond %{THE_REQUEST} \%24
+RewriteRule (.*)%24(.*) $1$$2 [N,R=301,L]

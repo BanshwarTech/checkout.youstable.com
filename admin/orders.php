@@ -163,6 +163,19 @@ $server_id = $_GET['server_id'];
                                     </select>
                                 </form>
                             </div>
+                            <?php
+                            if (isset($_SESSION["success_message"])) { ?>
+                                <div class="alert alert-success"><?php echo $_SESSION["success_message"] ?></div>
+                            <?php
+                                unset($_SESSION["success_message"]);
+                            }
+
+                            if (isset($_SESSION["error_message"])) { ?>
+                                <div class="alert alert-danger"><?php echo $_SESSION["error_message"] ?></div>
+                            <?php
+                                unset($_SESSION["error_message"]);
+                            }
+                            ?>
                             <div class="table-responsive">
                                 <table class="table datatable">
                                     <thead>
@@ -186,11 +199,12 @@ $server_id = $_GET['server_id'];
                                         $count = 0;
                                         $select = "SELECT * FROM `order`
                             LEFT JOIN `client` ON `order`.clientMail = `client`.email 
-                            WHERE `order`.is_del = '0' and `order`.clientMail='" . $email . "'";
+                            WHERE `order`.clientMail='" . $email . "'";
                                         if ($selectedDate != '') {
                                             $select .= " AND DATE(`order`.orderDate) = '$selectedDate'";
                                         }
                                         $select .= " ORDER BY `order`.orderDate DESC";
+                                        // echo $select;
                                         $result = mysqli_query($con, $select);
                                         if ($result) {
                                             while ($row = mysqli_fetch_assoc($result)) {
@@ -213,7 +227,7 @@ $server_id = $_GET['server_id'];
 
                                                     </td>
                                                     <td>
-                                                        <a href="send-order.php?server_id=<?php echo urlencode($server_id); ?>&oid=<?php echo urlencode($oid); ?>&domain=<?php echo urlencode($row["domainName"]); ?>&billingcycle=<?php echo 1; ?>&domaintype=<?php echo urlencode(trim('own')); ?>&paymentmethod=<?php echo urlencode(trim('paypalcheckout')); ?>&email=<?php echo urlencode(trim($_REQUEST['email'])); ?>"
+                                                        <a href="send-order.php?server_id=<?php echo urlencode($server_id); ?>&oid=<?php echo urlencode($oid); ?>&amount=<?php echo $row['totalAmount'] ?>&transactionId=<?php echo $row['transactionId']; ?>&domain=<?php echo urlencode($row["domainName"]); ?>&domaintype=<?php echo urlencode(trim('own')); ?>&billing_cycle=<?php echo $row['billing_cycle'] ?>&planName=<?php echo urlencode(trim($row["planName"])); ?>&email=<?php echo urlencode(trim($_REQUEST['email'])); ?>"
                                                             class="btn text-white" style="background:var(--bs-success);">
                                                             <i class="fa-solid fa-server"></i> Send Data
                                                         </a>

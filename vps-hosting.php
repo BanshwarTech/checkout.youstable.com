@@ -2,7 +2,7 @@
 $page = 'vps-hosting';
 include('inc/header.php');
 ?>
-<title><?= $page; ?></title>
+
 <style>
   .contact-hosting {
     font-size: 20px;

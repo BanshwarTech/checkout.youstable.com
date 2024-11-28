@@ -23,7 +23,7 @@
                         <p></p>
                         <a href="#" class="indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="monthly"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
                                 data-plan="vStart"
                                 data-currency="₹"
                                 type="submit">Get Started</button></a>
@@ -81,7 +81,7 @@
 
                         <a href="#" class="text-white indian-host-price" target="_self"><button class="btn-purple exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="monthly"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
                                 data-plan="vProfessional"
                                 data-currency="₹"
                                 type="submit">Get
@@ -118,9 +118,6 @@
                                 <p>Free Control Panel*</p>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
@@ -138,7 +135,7 @@
 
                         <a href="#" class="indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="monthly"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
                                 data-plan="vPopular"
                                 data-currency="₹"
                                 type="submit">Get
@@ -195,7 +192,7 @@
 
                         <a href="#" class="indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="monthly"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
                                 data-plan="vStable"
                                 data-currency="₹"
                                 type="submit">Get
@@ -257,7 +254,7 @@
                         <p></p>
                         <a href="#" class="link-color-black indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="semiannually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
                                 data-plan="vStart"
                                 data-currency="₹"
                                 type="submit">Get
@@ -317,7 +314,7 @@
 
                         <a href="#" class="text-white indian-host-price" target="_self"><button class="btn-purple exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="semiannually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
                                 data-plan="vProfessional"
                                 data-currency="₹"
                                 type="submit">Get
@@ -374,7 +371,7 @@
                         <p></p>
                         <a href="#" class="link-color-black indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="semiannually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
                                 data-plan="vPopular"
                                 data-currency="₹"
                                 type="submit">Get
@@ -431,7 +428,7 @@
                         <p></p>
                         <a href="#" class="link-color-black indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="semiannually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
                                 data-plan="vStable"
                                 data-currency="₹"
                                 type="submit">Get
@@ -493,7 +490,7 @@
                         <p></p>
                         <a href="#" class="link-color-black indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="annually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
                                 data-plan="vStart"
                                 data-currency="₹"
                                 type="submit">Get
@@ -553,7 +550,7 @@
 
                         <a href="#" class="text-white indian-host-price" target="_self"><button class="btn-purple exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="annually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
                                 data-plan="vProfessional"
                                 data-currency="₹"
                                 type="submit">Get
@@ -610,7 +607,7 @@
                         <p></p>
                         <a href="#" class="link-color-black indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="annually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
                                 data-plan="vPopular"
                                 data-currency="₹"
                                 type="submit">Get
@@ -667,7 +664,7 @@
                         <p></p>
                         <a href="#" class="link-color-black indian-host-price" target="_self"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
 
-                                data-plangroup="VPS HOSTING" data-billingcycle="annually"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
                                 data-plan="vStable"
                                 data-currency="₹"
                                 type="submit">Get
@@ -734,7 +731,7 @@
         // Use jQuery to send the data via POST to process.php
         $.post('process.php', postData, function(response) {
             // Prepare URL with query parameters for redirect
-            var url = 'order.php?billingcycle=' + encodeURIComponent(billingcycle) +
+            var url = 'payment-details.php?billingcycle=' + encodeURIComponent(billingcycle) +
                 '&plangroup=' + encodeURIComponent(plangroup) +
                 '&plan=' + encodeURIComponent(plan) +
                 '&currency=' + encodeURIComponent(currency);
