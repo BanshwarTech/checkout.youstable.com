@@ -1426,7 +1426,7 @@ echo "Coupon code : " . $validCouponCode, "<br/>discountFixed : " . $discountFix
                                 "image": "https://www.youstable.com/assets/img/logo_youstable.svg",
                                 "order_id": data.userData.rpay_order_id,
                                 "handler": function(response) {
-                                    window.location.replace("https://checkout.youstable.com/payment-success.php?oid=" + orderID + "&rp_payment_id=" + response.razorpay_payment_id + "&rp_signature=" + response.razorpay_signature + "&rp_order_id=" + response.razorpay_order_id);
+                                    window.location.replace("http://localhost/youstable/youstable.com/checkout.youstable.com/payment-success.php?oid=" + orderID + "&rp_payment_id=" + response.razorpay_payment_id + "&rp_signature=" + response.razorpay_signature + "&rp_order_id=" + response.razorpay_order_id);
                                 },
                                 "modal": {
                                     "ondismiss": function() {
@@ -1472,7 +1472,7 @@ echo "Coupon code : " . $validCouponCode, "<br/>discountFixed : " . $discountFix
                                     paymentRetryAttempted = true;
                                     rzp1.open();
                                 } else {
-                                    window.location.href = "https://checkout.youstable.com/payment-failed.php?oid=" + orderID;
+                                    window.location.href = "http://localhost/youstable/youstable.com/checkout.youstable.com/payment-failed.php?oid=" + orderID;
                                 }
                             });
 
