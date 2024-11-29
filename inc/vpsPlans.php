@@ -27,7 +27,10 @@
                                 data-plan="vStart"
                                 data-currency="₹"
                                 type="submit">Get Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=341&amp;billingcycle=monthly" class="usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get Started</button></a>
+                        <a href="#" class="usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
+                                data-plan="vStart"
+                                data-currency="$"
+                                type="submit">Get Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
                                 <img src="assets/img/speci-tick.png" class="specification-tick">
@@ -86,8 +89,16 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=342&amp;billingcycle=monthly" class="text-white usa-host-price" target="_self" style="display: none;"><button class="btn-purple exploreplan-btn" type="submit">Get
-                                Started</button></a>
+
+                        <a href="#" class="text-white usa-host-price" target="_self" style="display: none;">
+                            <button class="btn-purple exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
+                                data-plan="vProfessional"
+                                data-currency="$"
+                                type="submit">Get
+                                Started</button>
+                        </a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
                                 <img src="assets/img/speci-tick.png" class="specification-tick">
@@ -140,7 +151,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=343&amp;billingcycle=monthly" class="usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
+                                data-plan="vPopular"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -197,7 +213,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=344&amp;billingcycle=monthly" class="usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="monthly"
+                                data-plan="vStable"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -259,7 +280,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=341&amp;billingcycle=semiannually&amp;promocode=VPS30" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
+                                data-plan="vStart"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -319,7 +345,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=342&amp;billingcycle=semiannually&amp;promocode=VPS30" class="text-white usa-host-price" target="_self" style="display: none;"><button class="btn-purple exploreplan-btn" type="submit">Get
+                        <a href="#" class="text-white usa-host-price" target="_self" style="display: none;"><button class="btn-purple exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
+                                data-plan="vProfessional"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -376,7 +407,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=343&amp;billingcycle=semiannually&amp;promocode=VPS30" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" nclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
+                                data-plan="vPopular"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -433,7 +469,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=344&amp;billingcycle=semiannually&amp;promocode=VPS30" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="semiannually"
+                                data-plan="vStable"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -495,7 +536,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=341&amp;billingcycle=annually&amp;promocode=VPS50" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
+                                data-plan="vStart"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -555,7 +601,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=342&amp;billingcycle=annually&amp;promocode=VPS50" class="text-white usa-host-price" target="_self" style="display: none;"><button class="btn-purple exploreplan-btn" type="submit">Get
+                        <a href="#" class="text-white usa-host-price" target="_self" style="display: none;"><button class="btn-purple exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
+                                data-plan="vProfessional"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -612,7 +663,12 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=343&amp;billingcycle=annually&amp;promocode=VPS50" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
+                                data-plan="vPopular"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">
@@ -669,7 +725,11 @@
                                 data-currency="₹"
                                 type="submit">Get
                                 Started</button></a>
-                        <a href="https://www.youstable.com/manage/order.php?currency=1&amp;a=add&amp;pid=344&amp;billingcycle=annually&amp;promocode=VPS50" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" type="submit">Get
+                        <a href="#" class="link-color-black usa-host-price" target="_self" style="display: none;"><button class="btn-yellow exploreplan-btn" onclick="getPlanDetails(this)"
+                                data-plangroup="VPS-HOSTING" data-billingcycle="annually"
+                                data-plan="vStable"
+                                data-currency="$"
+                                type="submit">Get
                                 Started</button></a>
                         <div class="hosting_specification">
                             <div class="d-flex gap-2 specifications">

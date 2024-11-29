@@ -7,6 +7,8 @@ include 'db.php';
 $validCouponCode = "";
 $discountPercentage = 0;
 $_SESSION['select_plan_details'] = [];
+$_SESSION['select_coupon_details'] = [];
+$discountFixed = 0;
 $currentDate = new DateTime();
 $updateDate = "";
 $adjustedPrice = "";
@@ -31,20 +33,6 @@ $currency = isset($_GET['currency']) ? $_GET['currency'] : '';
 // echo $billingcycle;
 if (isset($_SESSION['plan_details'])) {
     $details = $_SESSION['plan_details'];
-    if ($billingcycle == "triannually") {
-        $validCouponCode = "SATISHKVIDEOS";
-        $discountPercentage = 95;
-    } elseif ($billingcycle == "annually") {
-        $validCouponCode = "SATISHKVIDEOS";
-        $discountPercentage = 95;
-    } elseif ($billingcycle == "semiannually") {
-        $validCouponCode = "SATISHKVIDEOS";
-        $discountPercentage = 95;
-    } else {
-        $validCouponCode = "";
-        $discountPercentage = 0;
-    }
-
     $planOptions = [];
 
     if ($plangroup == 'SHARED-HOSTING') {
@@ -59,11 +47,12 @@ if (isset($_SESSION['plan_details'])) {
             'semiannually' => '6 Months',
             'annually' => '12 Months',
         ];
-    } elseif ($plangroup == 'DEDICATED-INDIA') {
+    } elseif (in_array($plangroup, ['DEDICATED-INDIA', 'DEDICATED-NETHERLANDS', 'DEDICATED-USD'])) {
         $planOptions = [
-            'monthly' =>   '1 Month',
+            'monthly' => '1 Month',
         ];
     }
+
     if ($plangroup && $plan && $billingcycle) {
         //select data from database 
         $select = " SELECT * from plan_pricing LEFT JOIN plans ON plans.p_id=plan_pricing.plan_id LEFT JOIN plangroup ON plangroup.pg_id=plans.planGroup_id where plangroup.Name='" . $plangroup . "' and plans.name='" . $plan . "' and plan_pricing.billing_cycle='" . $billingcycle . "';";
@@ -79,6 +68,27 @@ if (isset($_SESSION['plan_details'])) {
         }
     }
 } else {
+}
+$sql = "SELECT * FROM `coupons` WHERE `billing_cycle` = '" . $billingcycle . "' AND plan_name = '" . $_SESSION["select_plan_details"]["p_id"] . "' AND `plangroup_name` = '" . $_SESSION["select_plan_details"]["pg_id"] . "' AND `status` = 1";
+// echo $sql;
+$result_coupon = mysqli_query($con, $sql);
+if ($result_coupon && mysqli_num_rows($result_coupon) > 0) {
+    while ($row_coupon = mysqli_fetch_assoc($result_coupon)) {
+        $_SESSION['select_coupon_details'] = $row_coupon;
+        if ($_SESSION['select_coupon_details']['billing_cycle'] == $billingcycle) {
+            $validCouponCode = $_SESSION['select_coupon_details']['coupon_code'];
+            $couponType = $_SESSION['select_coupon_details']['coupon_type'];
+            if ($couponType == "Percentage") {
+                $discountPercentage = $_SESSION['select_coupon_details']['coupon_value'];
+            } elseif ($couponType == "Fixed") {
+                $discountFixed = $_SESSION['select_coupon_details']['coupon_value'];
+            } else {
+                echo "Not Any type of coupon";
+            }
+        }
+    }
+} else {
+    echo "No Coupon  found.";
 }
 ?>
 
@@ -129,12 +139,8 @@ $updateDate = $currentDate->format('d-m-Y');
 if ($currency == '$') {
     $originalPriceUsd = $adjustedPrice ? $adjustedPrice : 0;
     $gatewayChargesUsd = $originalPriceUsd * 0.045;
-    $grandTotalUsd = $originalPriceUsd + $gatewayChargesUsd;
+    $grandTotalUsd = number_format(round($originalPriceUsd, 2)) + number_format(round($gatewayChargesUsd, 2));
     $grandTotalInINR =  $grandTotalUsd  * $conversionRate;
-    // echo $originalPriceUsd . "<br/>";
-    echo $gatewayChargesUsd . "<br/>";
-    // echo  $grandTotalUsd . "<br/>";
-    // echo "Grand Total in INR: ₹" . number_format($grandTotalInINR, 2);
 } elseif ($currency == '₹') {
     $originalPrice = $adjustedPrice ? $adjustedPrice : 0;
     $tax = $originalPrice * 0.18; // 18% tax
@@ -146,7 +152,10 @@ if ($currency == '$') {
     $gatewayCharges = $originalPrice * 0.02;
     $grandTotal = $originalPrice + $tax + $gatewayCharges;
 }
+// select coupon
 
+
+echo "Coupon code : " . $validCouponCode, "<br/>discountFixed : " . $discountFixed, "<br/> discountPercentage : " . $discountPercentage;
 ?>
 
 <!doctype html>
@@ -809,33 +818,16 @@ if ($currency == '$') {
                             <div class="price-summry">
                                 <div class="d-flex  justify-content-between mb-2 ">
                                     <span class="price-sum-detail">Sub Amount</span>
-                                    <?php
-                                    if ($currency == "$") {
-                                    ?>
-                                        <span class="original-price-usd"><?php echo $details['currency']; ?><?php echo number_format(round($originalPriceUsd), 2); ?></span>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <span class="original-price"><?php echo $details['currency']; ?><?php echo number_format(round($originalPrice), 2); ?></span>
-                                    <?php
-                                    }
+                                    <span class="<?= $currency === '$' ? 'original-price-usd' : 'original-price'; ?>">
+                                        <?= $details['currency'] . number_format(round($currency === '$' ? $originalPriceUsd : $originalPrice), 2); ?>
+                                    </span>
 
-                                    ?>
                                 </div>
                                 <div class="dis d-flex justify-content-between mb-2">
                                     <span class="price-sum-detail">Discount (0%)</span> <!-- This will be updated -->
-                                    <?php
-                                    if ($currency == "$") {
-                                    ?>
-                                        <span class="discount-amount-usd" style="font-size:16px;">0</span>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <span class="discount-amount" style="font-size:16px;">0</span>
-                                    <?php
+                                    <span class="<?= $currency === '$' ? 'discount-amount-usd' : 'discount-amount'; ?>" style="font-size:16px;">0</span>
 
-                                    }
-                                    ?>
+
 
                                 </div>
 
@@ -879,18 +871,10 @@ if ($currency == '$') {
                             <hr>
                             <div class="d-flex justify-content-between mb-4">
                                 <span class="grand-total1">Grand Total</span>
-                                <?php
-                                if ($currency == "$") {
-                                ?>
-                                    <span class="grand-total"><?php echo $details['currency'] ?><?php echo number_format(round($grandTotalUsd), 2); ?></span>
-                                <?php
-                                } else {
-                                ?>
-                                    <span class="grand-total"><?php echo $details['currency'] ?><?php echo number_format(round($grandTotal), 2); ?></span>
-                                <?php
-                                }
+                                <span class="<?= $currency === '$' ? 'grand-total-usd' : 'grand-total'; ?>">
+                                    <?= $details['currency'] . number_format(round($currency === '$' ? $grandTotalUsd : $grandTotal), 2); ?>
+                                </span>
 
-                                ?>
 
                             </div>
 
@@ -917,28 +901,20 @@ if ($currency == '$') {
 
                             <div class="d-flex justify-content-center mb-3">
                                 <?php
-                                if ($currency == '$') {
+                                $grandTotalValue = ($currency == '$') ? round($grandTotalUsd) : round($grandTotal);
                                 ?>
-                                    <button class="btn btn-primary proceed-btn payment-btn"
-                                        id="PayNow">Pay <?php echo $currencySymbol; ?><span class="price1"><?php echo number_format(round($grandTotalUsd), 2); ?></span></button><br>
+                                <button class="btn btn-primary proceed-btn payment-btn" id="PayNow">
+                                    Pay <?php echo $currencySymbol; ?><span class="price1"><?php echo number_format($grandTotalValue, 2); ?></span>
+                                </button><br>
 
-                                    <!- grandtotal accordinto the location-!>
 
-                                        <input type="hidden" name="payAmount" id="payAmount" class="payAmount"
-                                            value="<?php echo round($grandTotalInINR); ?>">
-                                    <?php
-                                } else {
-                                    ?>
-                                        <button class="btn btn-primary proceed-btn payment-btn"
-                                            id="PayNow">Pay <?php echo $currencySymbol; ?><span class="price1"><?php echo number_format(round($grandTotal), 2); ?></span></button><br>
+                                <?php
+                                $payAmountValue = ($currency == '$') ? round($grandTotalInINR) : round($grandTotal);
+                                ?>
+                                <!-- Grand total according to the location -->
+                                <input type="text" name="payAmount" id="payAmount" class="payAmount"
+                                    value="<?php echo round($payAmountValue, 2) ?>">
 
-                                        <!- grandtotal accordinto the location-!>
-
-                                            <input type="hidden" name="payAmount" id="payAmount" class="payAmount"
-                                                value="<?php echo round($grandTotal); ?>">
-                                        <?php
-                                    }
-                                        ?>
 
                             </div>
                             <div class="text-center">
@@ -1190,121 +1166,84 @@ if ($currency == '$') {
     <script>
         function checkCouponCode() {
             const couponInput = document.getElementById("couponCode").value.toUpperCase();
-            const validCouponCode = <?= '"' . $_SESSION["code"] . '"' ?>;
-            const currency = `<?php echo $currencySymbol; ?>`;
-            let originalPrice = 0;
-            let originalPriceUsd = 0;
+            const validCouponCode = <?= json_encode($_SESSION["code"]); ?>;
+            const currency = `<?= $currencySymbol; ?>`;
 
-            if (currency === '$') {
-                originalPriceUsd = parseFloat(
-                    `<?php echo isset($originalPriceUsd) && is_numeric($originalPriceUsd) ? round($originalPriceUsd) : '0'; ?>`
-                );
-            } else {
-                originalPrice = parseFloat(
-                    `<?php echo isset($originalPrice) && is_numeric($originalPrice) ? round($originalPrice) : '0'; ?>`
-                );
-            }
-            // check price is available or not 
-            if (currency === '$') {
-                if (isNaN(originalPriceUsd) || originalPriceUsd < 0) {
-                    console.error("Invalid original price");
-                    return;
-                }
-            } else {
-                if (isNaN(originalPrice) || originalPrice < 0) {
-                    console.error("Invalid original price");
-                    return;
-                }
-            }
-            const discountPercentage = <?php echo isset($discountPercentage) ? $discountPercentage : '0'; ?>; // Fixed discount percentage
-            let discountAmount = 0;
-            let afterDiscountPrice = 0;
-            let discountAmountUsd = 0;
-            let afterDiscountPriceUsd = 0;
-            // discount percentaage
-            if (currency === '$') {
-                const discountAmountUsd = originalPriceUsd * (discountPercentage / 100);
-                const afterDiscountPriceUsd = originalPriceUsd - discountAmount;
-            } else {
-                const discountAmount = originalPrice * (discountPercentage / 100);
-                const afterDiscountPrice = originalPrice - discountAmount;
-            }
+            const originalPrice = currency === "$" ?
+                parseFloat(`<?= isset($originalPriceUsd) ? round($originalPriceUsd, 2) : '0'; ?>`) :
+                parseFloat(`<?= isset($originalPrice) ? round($originalPrice, 2) : '0'; ?>`);
 
-
-            // Calculate 18% tax and 2% gateway charges on the discounted total
-
-            let tax = 0;
-            let gatewayCharges = 0;
-            let grandTotal = 0;
-            let gatewayChargesUsd = 0;
-            let grandTotalUsd = 0;
+            const discountPercentage = <?php echo isset($discountPercentage) ? $discountPercentage : '0'; ?>;
+            const exchangeRate = 0.012;
+            let discountFixed = <?php echo isset($discountFixed) ? $discountFixed : '0'; ?>;
             if (currency === '$') {
-                gatewayChargesUsd = originalPriceUsd * 0.045;
-                grandTotalUsd = afterDiscountPrice + gatewayCharges;
-            } else {
-                tax = originalPrice * 0.18;
-                gatewayCharges = originalPrice * 0.02;
-                grandTotal = afterDiscountPrice + tax + gatewayCharges;
+                discountFixed = (discountFixed * exchangeRate); // Convert and keep two decimal places
             }
+            if (isNaN(originalPrice) || originalPrice <= 0) {
+                console.error("Invalid original price.");
+                return;
+            }
+            let afterDiscountPrice;
+            let discountAmount;
 
-            // Grand total including tax and gateway charges
-            let discountElementUsd = 0;
-            let originalPriceElementUsd = 0;
-            let discountElement = 0;
-            let originalPriceElement = 0;
-            if (currency === '$') {
-                discountElementUsd = document.querySelector(".discount-amount-usd");
-                originalPriceElementUsd = document.querySelector(".original-price-usd");
-            } else {
-                discountElement = document.querySelector(".discount-amount");
-                originalPriceElement = document.querySelector(".original-price");
-            }
-            let applyCouponBtn = document.getElementById("applyCouponBtn");
-            let disCount = 0;
-            let disCountUsd = 0;
-            if (couponInput === validCouponCode) {
-                // Display discount amount
+            if (discountPercentage > 0) {
+                discountAmount = originalPrice * (discountPercentage / 100);
+                afterDiscountPrice = originalPrice - discountAmount;
+            } else if (discountFixed > 0) {
                 if (currency === "$") {
-                    disCountUsd = Math.round(discountAmountUsd);
-                    console.log(disCountUsd);
-                    discountElementUsd.textContent = `${currency}${disCountUsd.toFixed(2)}`;
-                    console.log(discountElementUsd.textContent);
-                    discountElementUsd.classList.add('text-green');
-                    discountElementUsd.classList.remove('text-red');
+                    discountAmount = originalPrice - discountFixed;
+                    afterDiscountPrice = originalPrice - discountFixed;
                 } else {
-                    disCount = Math.round(discountAmount);
-                    discountElement.textContent = `${currency}${disCount.toFixed(2)}`;
-                    discountElement.classList.add('text-green');
-                    discountElement.classList.remove('text-red');
+                    discountAmount = originalPrice - discountFixed;
+                    afterDiscountPrice = originalPrice - discountFixed;
                 }
-
-
-                // Format grand total and display the amounts
-                const formattedGrandTotal = Math.round(grandTotal).toFixed(2);
-                document.querySelector(".price1").textContent = `${Math.round(grandTotal).toFixed(2)}`;
-                document.querySelector(".payAmount").textContent = `${currency}${formattedGrandTotal}`;
-                document.querySelector(".grand-total").textContent = `${currency}${Math.round(grandTotal).toFixed(2)}`;
-                document.querySelector(".time-period-price").textContent = `${currency}${formattedGrandTotal}`;
-                document.getElementById("payAmount").value = Math.round(grandTotal).toFixed(2);
-                // document.querySelector(".after-discount").textContent = `${currency}${afterDiscountPrice.toFixed(2)}`;
-
-                // Display original price with a strikethrough
+            } else {
+                afterDiscountPrice = originalPrice; // No discount
+            }
+            const tax = originalPrice * (currency === "$" ? 0 : 0.18);
+            const gatewayCharges = originalPrice * (currency === "$" ? 0.045 : 0.02);
+            const grandTotal = afterDiscountPrice + tax + gatewayCharges;
+            const discountElement = document.querySelector(
+                currency === "$" ? ".discount-amount-usd" : ".discount-amount"
+            );
+            const originalPriceElement = document.querySelector(
+                currency === "$" ? ".original-price-usd" : ".original-price"
+            );
+            const applyCouponBtn = document.getElementById("applyCouponBtn");
+            if (couponInput === validCouponCode) {
+                let disCount = Math.round(discountAmount);
+                discountElement.textContent = `${currency}${disCount.toFixed(2)}`;
+                console.log(discountElement.textContent);
+                discountElement.classList.add('text-green');
+                discountElement.classList.remove('text-red');
                 originalPriceElement.innerHTML = `<del>${currency}${Math.round(originalPrice).toFixed(2)}</del>`;
-                document.querySelector('.dis span:first-child').textContent = `Discount(${discountPercentage}%)`;
+                const formattedGrandTotal = Math.round(grandTotal).toFixed(2);
+                let grandTotalInINR = formattedGrandTotal;
+                if (currency === "$") {
+                    grandTotalInINR = (formattedGrandTotal * 80).toFixed(2); //Multiply by 80 if currency is $
+                }
+                document.querySelector(".payAmount").textContent = `${currency}${grandTotalInINR}`;
+                document.getElementById("payAmount").value = grandTotalInINR;
+                document.querySelector(".price1").textContent = `${Math.round(grandTotal).toFixed(2)}`;
 
+                document.querySelector(currency === "$" ? ".grand-total-usd" : ".grand-total").textContent = `${currency}${Math.round(grandTotal).toFixed(2)}`;
+
+                document.querySelector(".time-period-price").textContent = `${currency}${formattedGrandTotal}`;
+                document.querySelector('.dis span:first-child').textContent = discountPercentage > 0 ?
+                    `Discount(${discountPercentage}%)` :
+                    discountFixed > 0 ?
+                    `Discount(${currency === '$' ? `$${discountFixed}` : `₹${discountFixed}`})` :
+                    `No Discount`;
                 // Show success message and update button state
                 toastr.success("Your coupon has been applied.", "Success", {
                     closeButton: true,
                     progressBar: true,
                     timeOut: 5000
                 });
-
                 // Change button color to red after applying the coupon
                 applyCouponBtn.textContent = "Remove";
-                applyCouponBtn.classList.remove('btn-primary');
-                applyCouponBtn.classList.add('btn-danger');
+                applyCouponBtn.classList.replace('btn-primary', 'btn-danger');
                 applyCouponBtn.setAttribute('onclick', 'removeCouponCode()');
-
             } else {
                 // Reset discount and display error message if coupon is invalid
                 discountElement.classList.remove('text-green');
@@ -1320,44 +1259,54 @@ if ($currency == '$') {
         }
 
         function removeCouponCode() {
+            const currency = `<?= $currencySymbol; ?>`;
+            const discountElement = document.querySelector(
+                currency === "$" ? ".discount-amount-usd" : ".discount-amount"
+            );
+            const originalPriceElement = document.querySelector(
+                currency === "$" ? ".original-price-usd" : ".original-price"
+            );
             const applyCouponBtn = document.getElementById("applyCouponBtn");
-            const discountElement = document.querySelector(".discount-amount");
-            const originalPriceElement = document.querySelector(".original-price");
-            const currency = `<?php echo $details['currency']; ?>`;
 
             // Reset the discount element
             discountElement.textContent = "0";
             discountElement.classList.remove('text-green');
             discountElement.classList.add('text-red');
 
-            const originalPrice = parseFloat(<?php echo round($originalPrice) ? round($originalPrice)  : '0'; ?>);
+            const originalPrice = currency === "$" ?
+                parseFloat(`<?= isset($originalPriceUsd) ? round($originalPriceUsd, 2) : '0'; ?>`) :
+                parseFloat(`<?= isset($originalPrice) ? round($originalPrice, 2) : '0'; ?>`);
 
             if (isNaN(originalPrice) || originalPrice < 0) {
                 console.error("Invalid original price");
                 return;
             }
 
-            // Recalculate tax and gateway charges based on the original price
-            const tax = originalPrice * 0.18;
-            const gatewayCharges = originalPrice * 0.02;
+            const tax = originalPrice * (currency === "$" ? 0 : 0.18);
 
-            // Grand total including tax and gateway charges (without discount)
+            const gatewayCharges = originalPrice * (currency === "$" ? 0.045 : 0.02);
+
             const grandTotal = originalPrice + tax + gatewayCharges;
-
             const formattedOriginalPrice = originalPrice.toLocaleString('en-IN', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
             const formattedGrandTotal = Math.round(grandTotal).toFixed(2);
+            let grandTotalInINR = formattedGrandTotal;
 
+            if (currency === "$") {
+                grandTotalInINR = (formattedGrandTotal * 80).toFixed(2); //Multiply by 80 if currency is $
+            }
             // Reset the price display
-            document.querySelector(".price1").textContent = `${formattedGrandTotal}`;
-            document.querySelector(".payAmount").textContent = `${currency}${formattedGrandTotal}`;
-            document.querySelector(".grand-total").textContent = `${currency}${formattedGrandTotal}`;
-            document.getElementById("payAmount").value = Math.round(grandTotal).toFixed(2);
+            document.querySelector(".payAmount").textContent = `${currency}${Math.round(grandTotalInINR).toFixed(2)}`;
+            document.getElementById("payAmount").value = grandTotalInINR;
+
+            document.querySelector(".price1").textContent = `${Math.round(grandTotal).toFixed(2)}`;
+            document.querySelector(currency === "$" ? ".grand-total-usd" : ".grand-total").textContent = `${currency}${Math.round(grandTotal).toFixed(2)}`;
+
             document.querySelector(".time-period-price").textContent = `${currency}${formattedGrandTotal}`;
             // Reset original price with no strikethrough
-            originalPriceElement.innerHTML = `${currency}${formattedOriginalPrice}`;
+            originalPriceElement.innerHTML = `${currency}${Math.round(originalPrice).toFixed(2)}`;
 
             // Reset discount label
             document.querySelector('.dis span:first-child').textContent = `Discount(0%)`;

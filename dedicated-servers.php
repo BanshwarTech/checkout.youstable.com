@@ -284,8 +284,11 @@ include('inc/header.php');
                     data-plan="E3-1230v3-3.30Ghz "
                     data-currency="₹" type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=354"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plan="E3-1230v3-3.30Ghz "
+                    data-currency="$" type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center " style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -310,8 +313,13 @@ include('inc/header.php');
                     data-plan="E3-123x v5/v6-3.2Ghz "
                     data-currency="₹" type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=346"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-INDIA"
+                    data-billingcycle="monthly"
+                    data-plan="E3-123x v5/v6-3.2Ghz "
+                    data-currency="$" type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center " style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -335,8 +343,12 @@ include('inc/header.php');
                     data-plan="E-2136-3.30Ghz "
                     data-currency="₹" type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=355"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plan="E-2136-3.30Ghz "
+                    data-currency="$" type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center " style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -360,8 +372,12 @@ include('inc/header.php');
                     data-plan="E-2286G - HEXA CORE-4.0Ghz "
                     data-currency="₹" type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=348"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plan="E-2286G - HEXA CORE-4.0Ghz "
+                    data-currency="$" type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center " style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -384,9 +400,14 @@ include('inc/header.php');
                     data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
                     data-plan="E5-2667v4-3.2Ghz"
                     data-currency="₹" type="submit">Buy Now</button></a></div>
-              <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=347"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+              <div class="usa-host-price space-wid-sett">
+                <a
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plan="E5-2667v4-3.2Ghz"
+                    data-currency="₹" type="submit"> Buy Now</button></a>
+              </div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center " style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -404,14 +425,15 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-
                     data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
-
                     data-plan="Ryzen 9 7700 "
                     data-currency="₹" type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=362"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plan="Ryzen 9 7700 "
+                    data-currency="$" type="submit">Buy Now</button></a></div>
             </div>
           </div>
         </div>
@@ -451,15 +473,17 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
-                    data-plan="E3-1230v3-3.30Ghz "
-
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
+                    data-plan="E3-1230v3-3.30Ghz"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=354"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
+                    data-plan="E3-1230v3-3.30Ghz "
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -478,13 +502,17 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
                     data-plan="E3-123x v5/v6-3.2Ghz "
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=346"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
+                    data-plan="E3-123x v5/v6-3.2Ghz "
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -504,13 +532,18 @@ include('inc/header.php');
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
 
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
                     data-plan="E-2136-3.30Ghz "
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=355"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" nclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
+                    data-plan="E-2136-3.30Ghz "
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -530,13 +563,18 @@ include('inc/header.php');
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
 
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
                     data-plan="E-2286G-4.00Ghz "
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=348"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
+                    data-plan="E-2286G-4.00Ghz "
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -556,13 +594,18 @@ include('inc/header.php');
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
 
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
                     data-plan="E5-2667v4-3.2Ghz "
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=347"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-USA" data-billingcycle="monthly"
+                    data-plan="E5-2667v4-3.2Ghz "
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <!-- <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -619,15 +662,17 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
-
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
                     data-plan="Ryzen 9 3900X (12c/24t)"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=356"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
+                    data-plan="Ryzen 9 3900X (12c/24t)"
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -646,15 +691,17 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-                    data-id="13"
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
-
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
                     data-plan="AMD Ryzen 9 5900X (12c/24t)"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=357"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
+                    data-plan="AMD Ryzen 9 5900X (12c/24t)"
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -673,15 +720,17 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-                    data-id="14"
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
-
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
                     data-plan="2x Intel Xeon E5-2620 v2 (12c/24t)"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=358"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
+                    data-plan="2x Intel Xeon E5-2620 v2 (12c/24t)"
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -700,15 +749,17 @@ include('inc/header.php');
               <div class="indian-host-price space-wid-sett"><a
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
-                    data-id="15"
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
-
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
                     data-plan="Intel Xeon E5-2680 v3 (12c/24t)"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=359"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
+                    data-plan="Intel Xeon E5-2680 v3 (12c/24t)"
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -728,14 +779,20 @@ include('inc/header.php');
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
 
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
 
                     data-plan="Intel Xeon E5-2683 v4 (16c/32t)"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=360"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
+
+                    data-plan="Intel Xeon E5-2683 v4 (16c/32t)"
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
 
             <div class="d-flex gap-2 text-center align-items-center" style="height: 82px;border-bottom: 1px solid #e6e6e6;">
@@ -755,14 +812,20 @@ include('inc/header.php');
                   href=""
                   class="link-color-black" target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
 
-                    data-plangroup="DEDICATED-INDIA" data-billingcycle="monthly"
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
 
                     data-plan="AMD EPYC 7502P (32c/64t)"
                     data-currency="₹"
                     type="submit">Buy Now</button></a></div>
               <div class="usa-host-price space-wid-sett"><a
-                  href="https://www.youstable.com/manage/order.php?currency=1&a=add&pid=361"
-                  class="link-color-black " target="_self"><button class="buy-now-btn">Buy Now</button></a></div>
+                  href="#"
+                  class="link-color-black " target="_self"><button class="buy-now-btn" onclick="buyNow(this)"
+
+                    data-plangroup="DEDICATED-NETHERLANDS" data-billingcycle="monthly"
+
+                    data-plan="AMD EPYC 7502P (32c/64t)"
+                    data-currency="$"
+                    type="submit">Buy Now</button></a></div>
             </div>
           </div>
         </div>

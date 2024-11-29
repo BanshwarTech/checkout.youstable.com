@@ -126,7 +126,12 @@ $server_id = $_GET['server_id'];
                     <span>Clients</span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="coupons.php">
+                    <i class="bi bi-person"></i>
+                    <span>Coupons</span>
+                </a>
+            </li>
 
         </ul>
 
